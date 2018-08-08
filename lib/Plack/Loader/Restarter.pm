@@ -47,9 +47,9 @@ sub _kill_child {
 sub valid_file {
     my($self, $file) = @_;
 
-    # vim temporary file is  4913 to 5036
+    # vim temporary file is 4913, 5036, ...
     # http://www.mail-archive.com/vim_dev@googlegroups.com/msg07518.html
-    if ( $file->{path} =~ m{(\d+)$} && $1 >= 4913 && $1 <= 5036) {
+    if ( $file->{path} =~ m{(\d+)$} && $1 >= 4913 && ($1-4913)%123 == 0) {
         return 0;
     }
     $file->{path} !~ m!\.(?:git|svn)[/\\]|\.(?:bak|swp|swpx|swx)$|~$|_flymake\.p[lm]$|\.#!;
