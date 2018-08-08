@@ -52,7 +52,7 @@ sub valid_file {
     if ( $file->{path} =~ m{(\d+)$} && $1 >= 4913 && ($1-4913)%123 == 0) {
         return 0;
     }
-    $file->{path} !~ m!\.(?:git|svn)[/\\]|\.(?:bak|swp|swpx|swx)$|~$|_flymake\.p[lm]$|\.#!;
+    $file->{path} !~ m!\.(?:git|svn)[/\\]|\.(?:bak|save|swp|swpx|swx)$|[~#]$|_flymake\.p[lm]$|\.#!;
 }
 
 sub run {
